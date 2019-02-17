@@ -59,6 +59,7 @@ class Map extends Component {
                 geography.id !== "ATA" && (
                   <Geography
                     key={i}
+                    data-tip={"<p class='tool-tip'>" + geography.properties.name + "</p> <b>Population:</b> " + geography.properties.pop_est + ""}
                     geography={geography}
                     projection={projection}
                     style={{
