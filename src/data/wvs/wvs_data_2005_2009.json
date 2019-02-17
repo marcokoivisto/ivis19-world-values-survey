@@ -1,0 +1,488 @@
+[
+    {
+        "country_code": "saarg",
+        "country_name": "Argentina",
+        "coordinates": [
+            -63.616673,
+            -38.416096
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 441,
+        "hard_work": 579,
+        "saving_money": 155,
+        "unselfishness": 87,
+        "imagination": 253,
+        "tolerance_and_respect": 716,
+        "determination": 236,
+        "obedience": 447
+    },
+    {
+        "country_code": "ocaus",
+        "country_name": "Australia",
+        "coordinates": [
+            133.775131,
+            -25.274399
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 904,
+        "hard_work": 690,
+        "saving_money": 499,
+        "unselfishness": 762,
+        "imagination": 612,
+        "tolerance_and_respect": 1303,
+        "determination": 701,
+        "obedience": 551
+    },
+    {
+        "country_code": "sabra",
+        "country_name": "Brazil",
+        "coordinates": [
+            -51.925282,
+            -14.235004
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 428,
+        "hard_work": 917,
+        "saving_money": 430,
+        "unselfishness": 602,
+        "imagination": 400,
+        "tolerance_and_respect": 967,
+        "determination": 472,
+        "obedience": 848
+    },
+    {
+        "country_code": "aschn",
+        "country_name": "China",
+        "coordinates": [
+            104.195396,
+            35.861660
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 1389,
+        "hard_work": 1661,
+        "saving_money": 1227,
+        "unselfishness": 614,
+        "imagination": 504,
+        "tolerance_and_respect": 1288,
+        "determination": 477,
+        "obedience": 274
+    },
+    {
+        "country_code": "sacol",
+        "country_name": "Colombia",
+        "coordinates": [
+            -73.637688,
+            4.151382
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 1013,
+        "hard_work": 574,
+        "saving_money": 1459,
+        "unselfishness": 1615,
+        "imagination": 538,
+        "tolerance_and_respect": 2545,
+        "determination": 609,
+        "obedience": 1792
+    },
+    {
+        "country_code": "ascyp",
+        "country_name": "Cyprus",
+        "coordinates": [
+            33.429859,
+            35.126411
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 875,
+        "hard_work": 815,
+        "saving_money": 682,
+        "unselfishness": 847,
+        "imagination": 270,
+        "tolerance_and_respect": 1388,
+        "determination": 847,
+        "obedience": 898
+    },
+    {
+        "country_code": "euest",
+        "country_name": "Estonia",
+        "coordinates": [
+            25.013607,
+            58.595272
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 399,
+        "hard_work": 1226,
+        "saving_money": 699,
+        "unselfishness": 233,
+        "imagination": 172,
+        "tolerance_and_respect": 1146,
+        "determination": 729,
+        "obedience": 410
+    },
+    {
+        "country_code": "eudeu",
+        "country_name": "Germany",
+        "coordinates": [
+            10.451526,
+            51.165691
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 3039,
+        "hard_work": 877,
+        "saving_money": 1697,
+        "unselfishness": 254,
+        "imagination": 1431,
+        "tolerance_and_respect": 2967,
+        "determination": 2328,
+        "obedience": 564
+    },
+    {
+        "country_code": "afgha",
+        "country_name": "Ghana",
+        "coordinates": [
+            -1.023194,
+            7.946527
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 571,
+        "hard_work": 1214,
+        "saving_money": 300,
+        "unselfishness": 507,
+        "imagination": 263,
+        "tolerance_and_respect": 1084,
+        "determination": 664,
+        "obedience": 1253
+    },
+    {
+        "country_code": "asind",
+        "country_name": "India",
+        "coordinates": [
+            78.962883,
+            20.593683
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 1338,
+        "hard_work": 1626,
+        "saving_money": 1109,
+        "unselfishness": 684,
+        "imagination": 509,
+        "tolerance_and_respect": 1116,
+        "determination": 815,
+        "obedience": 1118
+    },
+    {
+        "country_code": "asjpn",
+        "country_name": "Japan",
+        "coordinates": [
+            138.252930,
+            36.204823
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 877,
+        "hard_work": 355,
+        "saving_money": 573,
+        "unselfishness": 551,
+        "imagination": 338,
+        "tolerance_and_respect": 817,
+        "determination": 737,
+        "obedience": 56
+    },
+    {
+        "country_code": "asjor",
+        "country_name": "Jordan",
+        "coordinates": [
+            36.238415,
+            30.585163
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 513,
+        "hard_work": 511,
+        "saving_money": 303,
+        "unselfishness": 672,
+        "imagination": 214,
+        "tolerance_and_respect": 895,
+        "determination": 369,
+        "obedience": 778
+    },
+    {
+        "country_code": "askor",
+        "country_name": "South Korea",
+        "coordinates": [
+            127.766922,
+            35.907757
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 812,
+        "hard_work": 869,
+        "saving_money": 870,
+        "unselfishness": 139,
+        "imagination": 494,
+        "tolerance_and_respect": 682,
+        "determination": 539,
+        "obedience": 162
+    },
+    {
+        "country_code": "namex",
+        "country_name": "Mexico",
+        "coordinates": [
+            -102.552788,
+            23.634501
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 637,
+        "hard_work": 379,
+        "saving_money": 614,
+        "unselfishness": 742,
+        "imagination": 384,
+        "tolerance_and_respect": 1218,
+        "determination": 567,
+        "obedience": 909
+    },
+    {
+        "country_code": "afmar",
+        "country_name": "Morocco",
+        "coordinates": [
+            -7.092620,
+            31.791702
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 658,
+        "hard_work": 612,
+        "saving_money": 540,
+        "unselfishness": 439,
+        "imagination": 314,
+        "tolerance_and_respect": 703,
+        "determination": 327,
+        "obedience": 611
+    },
+    {
+        "country_code": "eunld",
+        "country_name": "Netherlands",
+        "coordinates": [
+            5.291266,
+            52.132633
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 1450,
+        "hard_work": 620,
+        "saving_money": 893,
+        "unselfishness": 624,
+        "imagination": 682,
+        "tolerance_and_respect": 2214,
+        "determination": 942,
+        "obedience": 874
+    },
+    {
+        "country_code": "saper",
+        "country_name": "New Zealand",
+        "coordinates": [
+            174.885971,
+            -40.900558
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 508,
+        "hard_work": 392,
+        "saving_money": 318,
+        "unselfishness": 367,
+        "imagination": 335,
+        "tolerance_and_respect": 787,
+        "determination": 465,
+        "obedience": 233
+    },
+    {
+        "country_code": "eupol",
+        "country_name": "Peru",
+        "coordinates": [
+            -75.015152,
+            -9.189967
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 412,
+        "hard_work": 813,
+        "saving_money": 169,
+        "unselfishness": 897,
+        "imagination": 192,
+        "tolerance_and_respect": 993,
+        "determination": 262,
+        "obedience": 808
+    },
+    {
+        "country_code": "eurus",
+        "country_name": "Poland",
+        "coordinates": [
+            19.145136,
+            51.919437
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 965,
+        "hard_work": 1421,
+        "saving_money": 1129,
+        "unselfishness": 434,
+        "imagination": 519,
+        "tolerance_and_respect": 1875,
+        "determination": 800,
+        "obedience": 915
+    },
+    {
+        "country_code": "afzaf",
+        "country_name": "Russia",
+        "coordinates": [
+            105.318756,
+            61.524010
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 1343,
+        "hard_work": 3001,
+        "saving_money": 1763,
+        "unselfishness": 653,
+        "imagination": 506,
+        "tolerance_and_respect": 2283,
+        "determination": 1636,
+        "obedience": 1189
+    },
+    {
+        "country_code": "afzwe",
+        "country_name": "South Africa",
+        "coordinates": [
+            22.937506,
+            -30.559483
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 1758,
+        "hard_work": 2113,
+        "saving_money": 1102,
+        "unselfishness": 915,
+        "imagination": 467,
+        "tolerance_and_respect": 2329,
+        "determination": 984,
+        "obedience": 1398
+    },
+    {
+        "country_code": "euesp",
+        "country_name": "Spain",
+        "coordinates": [
+            -3.749220,
+            40.463669
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 958,
+        "hard_work": 1060,
+        "saving_money": 757,
+        "unselfishness": 427,
+        "imagination": 570,
+        "tolerance_and_respect": 2077,
+        "determination": 721,
+        "obedience": 878
+    },
+    {
+        "country_code": "euswe",
+        "country_name": "Sweden",
+        "coordinates": [
+            18.643501,
+            60.128162
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 1539,
+        "hard_work": 226,
+        "saving_money": 972,
+        "unselfishness": 730,
+        "imagination": 1034,
+        "tolerance_and_respect": 2008,
+        "determination": 867,
+        "obedience": 347
+    },
+    {
+        "country_code": "astur",
+        "country_name": "Turkey",
+        "coordinates": [
+            35.243320,
+            38.963745
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 998,
+        "hard_work": 2791,
+        "saving_money": 1386,
+        "unselfishness": 961,
+        "imagination": 811,
+        "tolerance_and_respect": 1948,
+        "determination": 1141,
+        "obedience": 1413
+    },
+    {
+        "country_code": "euukr",
+        "country_name": "Ukraine",
+        "coordinates": [
+            31.165581,
+            48.379433
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 616,
+        "hard_work": 2084,
+        "saving_money": 1194,
+        "unselfishness": 409,
+        "imagination": 454,
+        "tolerance_and_respect": 1470,
+        "determination": 976,
+        "obedience": 1103
+    },
+    {
+        "country_code": "afegy",
+        "country_name": "Egypt",
+        "coordinates": [
+            31.165581,
+            48.379433
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 812,
+        "hard_work": 1738,
+        "saving_money": 830,
+        "unselfishness": 1561,
+        "imagination": 321,
+        "tolerance_and_respect": 2164,
+        "determination": 672,
+        "obedience": 2063
+    },
+    {
+        "country_code": "nausa",
+        "country_name": "United States",
+        "coordinates": [
+            -95.712891,
+            37.090240
+        ],
+        "max_year": 2009,
+        "min_year": 2005,
+        "independence": 672,
+        "hard_work": 771,
+        "saving_money": 373,
+        "unselfishness": 470,
+        "imagination": 396,
+        "tolerance_and_respect": 978,
+        "determination": 502,
+        "obedience": 353
+    }
+]
