@@ -24,7 +24,7 @@ const popScale = scaleLinear()
 
 const independenceScale = scaleLinear()
   .domain([0, 3665])
-  .range([1, 25])
+  .range([1, 35])
 
 class Map extends Component {
   constructor() {
