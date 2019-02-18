@@ -17,15 +17,17 @@ class App extends Component {
     return (
       <div className="App">
         <Map></Map>
-        <Container>
+        <div className="content text-center">
+          <Container>
+            <Spacer size="extra-large" />
+            {this.renderToggles()}
+            <Spacer />
+            <h2>Discover processes of {!this.state.discoverProcessToShow ? 'World Values Survey' : 'my visualization'}</h2>
+            <Spacer size="small" />
+            {this.renderSlider()}
+          </Container>
           <Spacer size="extra-large" />
-          {this.renderToggles()}
-          <Spacer />
-          <h2>Discover processes of {!this.state.discoverProcessToShow ? 'World Values Survey' : 'my visualization'}</h2>
-          <Spacer size="small" />
-          {this.renderSlider()}
-        </Container>
-        <Spacer size="extra-large" />
+        </div>
       </div>
     );
   }
