@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Button } from 'react-bootstrap';
+import { Container, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import DiscoverSlider from './components/discover-slider/DiscoverSlider';
 import Slide from './components/slide/Slide';
 import Map from './components/map/Map';
@@ -36,10 +36,10 @@ class App extends Component {
   }
   renderToggles() {
     return(
-      <div>
-        <Button onClick={() => this.setDiscoverProcessToShow(0)} className={!this.state.discoverProcessToShow ? 'toggle active' : 'toggle'}>World Values Survey</Button>
-        <Button onClick={() => this.setDiscoverProcessToShow(1)} className={this.state.discoverProcessToShow ? 'toggle active' : 'toggle'}>My visualization</Button>
-      </div>
+      <ToggleButtonGroup type="radio" name="options" defaultValue={0}>
+        <ToggleButton variant="secondary" value={0} onClick={() => this.setDiscoverProcessToShow(0)}>World Values Survey</ToggleButton>
+        <ToggleButton variant="secondary" value={1} onClick={() => this.setDiscoverProcessToShow(1)}>My visualization</ToggleButton>
+      </ToggleButtonGroup>
     )
   }
   renderSlider() {
