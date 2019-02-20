@@ -11,7 +11,7 @@ import { scaleLinear } from 'd3-scale';
 import ReactTooltip from 'react-tooltip';
 import { dimensionNames } from '../../data/wvs_data_strings.js';
 import { from2010to2014, from2005to2009, from1999to2004, from1995to1998, from1990to1994 } from '../../data/wvs_data_sets.js';
-import { Container, Row, Col, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Container, Row, Col, ToggleButtonGroup, ToggleButton, Form } from 'react-bootstrap';
 import Spacer from '../spacer/Spacer';
 import './Map.css';
 
@@ -25,18 +25,25 @@ const popScale = scaleLinear()
   .domain([0, 100000000, 1400000000])
   .range(["#CFD8DC", "#607D8B", "#37474F"])
 
+const colorScale = scaleLinear()
+  .domain([0, 2000, 4000])
+  .range(["#dc3545", "#ffc107", "#28a745"])
+
 const independenceScale = scaleLinear()
-  .domain([0, 3665])
-  .range([1, 35])
+  .domain([0, 4000])
+  .range([3, 40])
 
 class Map extends Component {
   constructor() {
     super()
     this.state = {
       center: [0, 20],
-      zoom: 1,
+      zoom: 0.9,
       countries: from2010to2014,
+      sizeVariable: 'independence',
+      colorVariable: 'hard_work',
     }
+    this.handleSelectVariableChange = this.handleSelectVariableChange.bind(this);
   }
   componentDidMount() {
     setTimeout(() => {
@@ -67,6 +74,13 @@ class Map extends Component {
     }
     this.setState({ countries: dataSet });
   }
+  handleSelectVariableChange(event) {
+    if (event.target.name !== 'color') {
+      this.setState({ sizeVariable: event.target.value });
+    } else {
+      this.setState({ colorVariable: event.target.value });
+    }
+  }
   render() {
     return (
       <div style={wrapperStyles}>
@@ -80,19 +94,19 @@ class Map extends Component {
             height: '100%',
           }}
         >
-        <ZoomableGroup center={this.state.center}>
+        <ZoomableGroup center={this.state.center} zoom={this.state.zoom}>
           <Geographies geography="/static/world-50m-with-population.json">
             {(geographies, projection) =>
               geographies.map((geography, i) =>
                 geography.id !== "ATA" && (
                   <Geography
                     key={i}
-                    data-tip={"<p className='tool-tip'>" + geography.properties.name + "</p> <b>Population:</b> " + geography.properties.pop_est + ""}
+                    data-tiip={"<p class='tool-tip-title'>" + geography.properties.name + "</p> <b>Population:</b> " + geography.properties.pop_est + ""}
                     geography={geography}
                     projection={projection}
                     style={{
                       default: {
-                        fill: popScale(geography.properties.pop_est),
+                        fill: '#ddd',
                         stroke: "#607D8B",
                         strokeWidth: 0.75,
                         outline: "none",
@@ -120,9 +134,9 @@ class Map extends Component {
                   <circle
                     cx={0}
                     cy={0}
-                    r={independenceScale(country.independence)}
-                    data-tip={"<p className='tool-tip'>" + country.name + "</p> <b>" + dimensionNames.independence + ":</b> " + country.independence + " <br /> <b>" + dimensionNames.hard_work + ":</b> " + country.hard_work + " <br /> <b>" + dimensionNames.saving_money + ":</b> " + country.saving_money + " <br /> <b>" + dimensionNames.unselfishness + ":</b> " + country.unselfishness + " <br /> <b>" + dimensionNames.imagination + ":</b> " + country.imagination + " <br /> <b>" + dimensionNames.tolerance_and_respect + ":</b> " + country.tolerance_and_respect + " <br /> <b>" + dimensionNames.determination + ":</b> " + country.determination + " <br /> <b>" + dimensionNames.obedience + ":</b> " + country.obedience + " <br />"}
-                    fill="rgba(255,87,34,1)"
+                    r={independenceScale(country['' + this.state.sizeVariable])}
+                    data-tip={"<p class='tool-tip-title'>" + country.name + "</p>"}
+                    fill={colorScale(country['' + this.state.colorVariable])}
                     stroke="#607D8B"
                     strokeWidth="2"
                   />
@@ -139,20 +153,21 @@ class Map extends Component {
   }
   renderTopBar() {
     return (
-      <div className="bar">
+      <div className="bar top">
         <Spacer />
         <Container>
           <Row bsPrefix="row justify-content-between align-items-center">
             <Col md="auto">
-              <h1><i className="fas fa-child"></i> {dimensionNames.title}</h1>
+              <h1><i className="fas fa-child"></i> Important child qualities</h1>
             </Col>
             <Col md="auto">
+              <Form.Label><b>Year</b></Form.Label>
               <ToggleButtonGroup type="radio" name="options" defaultValue={2014}>
-                <ToggleButton value={1994} onClick={() => this.handleYearChange(1994)}>1990-1994</ToggleButton>
-                <ToggleButton value={1998} onClick={() => this.handleYearChange(1998)}>1995-1998</ToggleButton>
-                <ToggleButton value={2004} onClick={() => this.handleYearChange(2004)}>1999-2004</ToggleButton>
-                <ToggleButton value={2009} onClick={() => this.handleYearChange(2009)}>2005-2009</ToggleButton>
-                <ToggleButton value={2014} onClick={() => this.handleYearChange(2014)}>2010-2014</ToggleButton>
+                <ToggleButton variant="secondary" value={1994} onClick={() => this.handleYearChange(1994)}>1990-1994</ToggleButton>
+                <ToggleButton variant="secondary" value={1998} onClick={() => this.handleYearChange(1998)}>1995-1998</ToggleButton>
+                <ToggleButton variant="secondary" value={2004} onClick={() => this.handleYearChange(2004)}>1999-2004</ToggleButton>
+                <ToggleButton variant="secondary" value={2009} onClick={() => this.handleYearChange(2009)}>2005-2009</ToggleButton>
+                <ToggleButton variant="secondary" value={2014} onClick={() => this.handleYearChange(2014)}>2010-2014</ToggleButton>
               </ToggleButtonGroup>
             </Col>
           </Row>
@@ -168,10 +183,46 @@ class Map extends Component {
         <Container>
           <Row bsPrefix="row justify-content-between align-items-center">
             <Col md="auto">
-              Title here
+              <div className="flex align-items-center">
+                <div className="circle size"><i class="fal fa-arrows-h"></i></div>
+                <div className="h-spacing-small"></div>
+                <Form.Group className="no-margin" controlId="exampleForm.ControlSelectSize">
+                  <Form.Label><b>Size</b></Form.Label>
+                  <Form.Control name="size" as="select" onChange={this.handleSelectVariableChange} value={this.state.sizeVariable}>
+                    <option key="independence" value="independence">Independence</option>
+                    <option key="hard_work" value="hard_work">Hard work</option>
+                    <option key="saving_money" value="saving_money">Thrift saving money and things</option>
+                    <option key="unselfishness" value="unselfishness">Unselfishness</option>
+                    <option key="imagination" value="imagination">Imagination</option>
+                    <option key="tolerance_and_respect" value="tolerance_and_respect">Tolerance and respect for other people</option>
+                    <option key="determination" value="determination">Determination, perseverance</option>
+                    <option key="obedience" value="obedience">Obedience</option>
+                  </Form.Control>
+                </Form.Group>
+                <div className="h-spacing"></div>
+                <div className="circle color gradient-color"><i class="fal fa-palette"></i></div>
+                <div className="h-spacing-small"></div>
+                <Form.Group className="no-margin" controlId="exampleForm.ControlSelectColor">
+                  <Form.Label><b>Fill</b></Form.Label>
+                  <Form.Control name="color" as="select" onChange={this.handleSelectVariableChange} value={this.state.colorVariable}>
+                    <option key="independence" value="independence">Independence</option>
+                    <option key="hard_work" value="hard_work">Hard work</option>
+                    <option key="saving_money" value="saving_money">Thrift saving money and things</option>
+                    <option key="unselfishness" value="unselfishness">Unselfishness</option>
+                    <option key="imagination" value="imagination">Imagination</option>
+                    <option key="tolerance_and_respect" value="tolerance_and_respect">Tolerance and respect for other people</option>
+                    <option key="determination" value="determination">Determination, perseverance</option>
+                    <option key="obedience" value="obedience">Obedience</option>
+                  </Form.Control>
+                </Form.Group>
+              </div>
             </Col>
             <Col md="auto">
-              Buttons here
+              <div className="color-scale gradient-color">
+                <a href="#" className="filter-button"><i className="fas fa-check"></i> Low</a>
+                <a href="#" className="filter-button active"><i className="fas fa-check"></i> Medium</a>
+                <a href="#" className="filter-button active"><i className="fas fa-check"></i> High</a>
+              </div>
             </Col>
           </Row>
         </Container>

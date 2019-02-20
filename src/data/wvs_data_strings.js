@@ -1,5 +1,4 @@
 export const dimensionNames = {
-  "title": "Important child qualities",
   "independence": "Independence",
   "hard_work": "Hard work",
   "saving_money": "Thrift saving money and things",
