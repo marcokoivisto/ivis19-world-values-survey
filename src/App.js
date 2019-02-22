@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Container, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import DiscoverSlider from './components/discover-slider/DiscoverSlider';
 import Slide from './components/slide/Slide';
 import Map from './components/map/Map';

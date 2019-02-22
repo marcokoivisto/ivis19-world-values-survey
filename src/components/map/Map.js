@@ -9,10 +9,10 @@ import {
 } from 'react-simple-maps';
 import { scaleLinear } from 'd3-scale';
 import ReactTooltip from 'react-tooltip';
-import { dimensionNames } from '../../data/wvs_data_strings.js';
 import { from2010to2014, from2005to2009, from1999to2004, from1995to1998, from1990to1994 } from '../../data/wvs_data_sets.js';
 import { Container, Row, Col, ToggleButtonGroup, ToggleButton, Form } from 'react-bootstrap';
 import Spacer from '../spacer/Spacer';
+import dimensionNames from '../../data/wvs_data_strings.js';
 import './Map.css';
 
 const wrapperStyles = {
@@ -21,16 +21,12 @@ const wrapperStyles = {
   overflow: 'hidden'
 }
 
-const popScale = scaleLinear()
-  .domain([0, 100000000, 1400000000])
-  .range(["#CFD8DC", "#607D8B", "#37474F"])
-
 const colorScale = scaleLinear()
-  .domain([0, 2000, 4000])
+  .domain([0, 2250, 4500])
   .range(["#dc3545", "#ffc107", "#28a745"])
 
 const independenceScale = scaleLinear()
-  .domain([0, 4000])
+  .domain([0, 4500])
   .range([3, 40])
 
 class Map extends Component {
@@ -42,6 +38,10 @@ class Map extends Component {
       countries: from2010to2014,
       sizeVariable: 'independence',
       colorVariable: 'hard_work',
+      showSetsLow: true,
+      showSetsMedium: true,
+      showSetsHigh: true,
+      unfilteredCountries: from2010to2014,
     }
     this.handleSelectVariableChange = this.handleSelectVariableChange.bind(this);
   }
@@ -51,6 +51,8 @@ class Map extends Component {
     }, 100)
   }
   handleYearChange(year) {
+    this.setState({ showSetsLow: true, showSetsMedium: true, showSetsHigh: true });
+    this.setState({currentYear: year});
     var dataSet = null;
     switch (year) {
       case 2014:
@@ -72,7 +74,7 @@ class Map extends Component {
       default:
         break;
     }
-    this.setState({ countries: dataSet });
+    this.setState({ countries: dataSet, unfilteredCountries: dataSet });
   }
   handleSelectVariableChange(event) {
     if (event.target.name !== 'color') {
@@ -80,6 +82,37 @@ class Map extends Component {
     } else {
       this.setState({ colorVariable: event.target.value });
     }
+  }
+  handleFilterCountries(filter) {
+    if (filter === 0) {
+      this.setState({ showSetsLow: !this.state.showSetsLow }, (filter) => this.filterCountries(filter));
+    } else if (filter === 1) {
+      this.setState({ showSetsMedium: !this.state.showSetsMedium }, (filter) => this.filterCountries(filter));
+    } else if (filter === 2) {
+      this.setState({ showSetsHigh: !this.state.showSetsHigh }, (filter) => this.filterCountries(filter));
+    }
+  }
+  filterCountries(filter) {
+    this.setState({ countries: this.state.unfilteredCountries });
+    var filtered = this.state.unfilteredCountries;
+
+    if ((filter === 0 && this.state.showSetsLow) || !this.state.showSetsLow) {
+      filtered = filtered.filter((country) => {
+        return country[this.state.colorVariable] > 1500;
+      });
+    }
+    if ((filter === 1 && this.state.showSetsMedium) || !this.state.showSetsMedium) {
+      filtered = filtered.filter((country) => {
+        return country[this.state.colorVariable] < 1500 || country[this.state.colorVariable] > 3000;
+      });
+    }
+    if ((filter === 2 && this.state.showSetsHigh) || !this.state.showSetsHigh) {
+      filtered = filtered.filter((country) => {
+        return country[this.state.colorVariable] < 3000;
+      });
+    }
+
+    this.setState({countries: filtered});
   }
   render() {
     return (
@@ -128,14 +161,14 @@ class Map extends Component {
                 ))}
           </Geographies>
           <Markers>
-            {
+            {this.state.countries.length &&
               this.state.countries.map((country, i) => (
                 <Marker key={i} marker={country}>
                   <circle
                     cx={0}
                     cy={0}
                     r={independenceScale(country['' + this.state.sizeVariable])}
-                    data-tip={"<p class='tool-tip-title'>" + country.name + "</p>"}
+                    data-tip={"<p class='tool-tip-title'><i class='fas fa-flag'></i> " + country.name + "</p><div class='flex align-items-center'><div class='circle size'><i class='fal fa-arrows-h'></i></div><span><b>" + dimensionNames(this.state.sizeVariable) + "</b><br>" + country['' + this.state.sizeVariable] + " mentioned</span></div><div class='flex align-items-center'><div class='circle color gradient-color'><i class='fal fa-palette'></i></div><span><b>" + dimensionNames(this.state.colorVariable) + "</b><br>" + country['' + this.state.colorVariable] + " mentioned</span></div>"}
                     fill={colorScale(country['' + this.state.colorVariable])}
                     stroke="#607D8B"
                     strokeWidth="2"
@@ -146,7 +179,7 @@ class Map extends Component {
           </Markers>
         </ZoomableGroup>
       </ComposableMap>
-      <ReactTooltip html={true} />
+        <ReactTooltip html={true} className="tool-tip" />
       {this.renderBottomBar()}
     </div>
     )
@@ -158,7 +191,14 @@ class Map extends Component {
         <Container>
           <Row bsPrefix="row justify-content-between align-items-center">
             <Col md="auto">
-              <h1><i className="fas fa-child"></i> Important child qualities</h1>
+              <div className="flex align-items-center">
+                <h1><i className="fas fa-child"></i></h1>
+                <div className="h-spacing-small"></div>
+                <span>
+                  <h1>Important child qualities</h1>
+                  <p className="no-margin">Visualizes prefeered child qualities worldwide</p>
+                </span>
+              </div>
             </Col>
             <Col md="auto">
               <Form.Label><b>Year</b></Form.Label>
@@ -219,9 +259,9 @@ class Map extends Component {
             </Col>
             <Col md="auto">
               <div className="color-scale gradient-color">
-                <a href="#" className="filter-button"><i className="fas fa-check"></i> Low</a>
-                <a href="#" className="filter-button active"><i className="fas fa-check"></i> Medium</a>
-                <a href="#" className="filter-button active"><i className="fas fa-check"></i> High</a>
+                <a onClick={() => this.handleFilterCountries(0)} href="#" className={this.state.showSetsLow ? 'filter-button active' : 'filter-button'}><i className={this.state.showSetsLow ? 'fas fa-check' : 'fas fa-times'}></i> Low</a>
+                <a onClick={() => this.handleFilterCountries(1)} href="#" className={this.state.showSetsMedium ? 'filter-button active' : 'filter-button'}><i className={this.state.showSetsMedium ? 'fas fa-check' : 'fas fa-times'}></i> Medium</a>
+                <a onClick={() => this.handleFilterCountries(2)} href="#" className={this.state.showSetsHigh ? 'filter-button active' : 'filter-button'}><i className={this.state.showSetsHigh ? 'fas fa-check' : 'fas fa-times'}></i> High</a>
               </div>
             </Col>
           </Row>
