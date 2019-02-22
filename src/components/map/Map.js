@@ -44,7 +44,6 @@ class Map extends Component {
     }
     this.handleSelectVariableChange = this.handleSelectVariableChange.bind(this);
   }
-
   componentDidUpdate() {
     ReactTooltip.rebuild();
   }
@@ -100,17 +99,17 @@ class Map extends Component {
 
     if ((filter === 0 && this.state.showSetsLow) || !this.state.showSetsLow) {
       filtered = filtered.filter((country) => {
-        return country[this.state.colorVariable] > 1500;
+        return country[this.state.colorVariable] > (this.state.colorHighest / 3);
       });
     }
     if ((filter === 1 && this.state.showSetsMedium) || !this.state.showSetsMedium) {
       filtered = filtered.filter((country) => {
-        return country[this.state.colorVariable] < 1500 || country[this.state.colorVariable] > 3000;
+        return country[this.state.colorVariable] < (this.state.colorHighest / 3) || country[this.state.colorVariable] > ((this.state.colorHighest / 3) * 2);
       });
     }
     if ((filter === 2 && this.state.showSetsHigh) || !this.state.showSetsHigh) {
       filtered = filtered.filter((country) => {
-        return country[this.state.colorVariable] < 3000;
+        return country[this.state.colorVariable] < ((this.state.colorHighest / 3) * 2);
       });
     }
 
