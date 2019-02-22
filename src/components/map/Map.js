@@ -45,6 +45,9 @@ class Map extends Component {
     }
     this.handleSelectVariableChange = this.handleSelectVariableChange.bind(this);
   }
+  componentDidUpdate() {
+    ReactTooltip.rebuild();
+  }
   componentDidMount() {
     setTimeout(() => {
       ReactTooltip.rebuild()
