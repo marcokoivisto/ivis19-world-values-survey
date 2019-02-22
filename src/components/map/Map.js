@@ -20,14 +20,11 @@ const wrapperStyles = {
   height: '100vh',
   overflow: 'hidden'
 }
-
-const colorScale = scaleLinear()
-  .domain([0, 2250, 4500])
+var colorScale = scaleLinear()
   .range(["#dc3545", "#ffc107", "#28a745"])
 
-const independenceScale = scaleLinear()
-  .domain([0, 4500])
-  .range([3, 40])
+var independenceScale = scaleLinear()
+  .range([5, 25])
 
 class Map extends Component {
   constructor() {
@@ -47,6 +44,7 @@ class Map extends Component {
     }
     this.handleSelectVariableChange = this.handleSelectVariableChange.bind(this);
   }
+
   componentDidUpdate() {
     ReactTooltip.rebuild();
   }
@@ -56,8 +54,7 @@ class Map extends Component {
     }, 100)
   }
   handleYearChange(year) {
-    this.setState({ showSetsLow: true, showSetsMedium: true, showSetsHigh: true });
-    this.setState({currentYear: year});
+    this.setState({ showSetsLow: true, showSetsMedium: true, showSetsHigh: true, currentYear: year, sizeHighest: 0, colorHighest: 0 });
     var dataSet = null;
     switch (year) {
       case 2014:
@@ -179,9 +176,9 @@ class Map extends Component {
                     <circle
                       cx={0}
                       cy={0}
-                      r={independenceScale(country['' + this.state.sizeVariable])}
+                      r={independenceScale.domain([0, this.state.sizeHighest])(country['' + this.state.sizeVariable])}
                       data-tip={"<p class='tool-tip-title'><i class='fas fa-flag'></i> " + country.name + "</p><div class='flex align-items-center'><div class='circle size'><i class='fal fa-arrows-h'></i></div><span><b>" + dimensionNames(this.state.sizeVariable) + "</b><br>" + parseInt((country['' + this.state.sizeVariable] / this.state.sizeHighest) * 100) + "% of world average</span></div><div class='flex align-items-center'><div class='circle color gradient-color'><i class='fal fa-palette'></i></div><span><b>" + dimensionNames(this.state.colorVariable) + "</b><br>" + parseInt((country['' + this.state.colorVariable] / this.state.colorHighest) * 100) + "% of world average</span></div>"}
-                      fill={colorScale(country['' + this.state.colorVariable])}
+                      fill={colorScale.domain([0, this.state.colorHighest/2, this.state.colorHighest])(country['' + this.state.colorVariable])}
                       stroke="#607D8B"
                       strokeWidth="2"
                     />
