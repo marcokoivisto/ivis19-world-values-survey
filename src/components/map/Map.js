@@ -42,6 +42,8 @@ class Map extends Component {
       showSetsMedium: true,
       showSetsHigh: true,
       unfilteredCountries: from2010to2014,
+      sizeHighest: 0,
+      colorHighest: 0,
     }
     this.handleSelectVariableChange = this.handleSelectVariableChange.bind(this);
   }
@@ -165,19 +167,27 @@ class Map extends Component {
           </Geographies>
           <Markers>
             {this.state.countries.length &&
-              this.state.countries.map((country, i) => (
-                <Marker key={i} marker={country}>
-                  <circle
-                    cx={0}
-                    cy={0}
-                    r={independenceScale(country['' + this.state.sizeVariable])}
-                    data-tip={"<p class='tool-tip-title'><i class='fas fa-flag'></i> " + country.name + "</p><div class='flex align-items-center'><div class='circle size'><i class='fal fa-arrows-h'></i></div><span><b>" + dimensionNames(this.state.sizeVariable) + "</b><br>" + country['' + this.state.sizeVariable] + " mentioned</span></div><div class='flex align-items-center'><div class='circle color gradient-color'><i class='fal fa-palette'></i></div><span><b>" + dimensionNames(this.state.colorVariable) + "</b><br>" + country['' + this.state.colorVariable] + " mentioned</span></div>"}
-                    fill={colorScale(country['' + this.state.colorVariable])}
-                    stroke="#607D8B"
-                    strokeWidth="2"
-                  />
-                </Marker>
-              ))
+              this.state.countries.map((country, i) => {
+                if (country['' + this.state.sizeVariable] > this.state.sizeHighest) {
+                  this.setState({ sizeHighest: country['' + this.state.sizeVariable] });
+                }
+                if (country['' + this.state.colorVariable] > this.state.colorHighest) {
+                  this.setState({ colorHighest: country['' + this.state.colorVariable] });
+                }
+                return (
+                  <Marker key={i} marker={country}>
+                    <circle
+                      cx={0}
+                      cy={0}
+                      r={independenceScale(country['' + this.state.sizeVariable])}
+                      data-tip={"<p class='tool-tip-title'><i class='fas fa-flag'></i> " + country.name + "</p><div class='flex align-items-center'><div class='circle size'><i class='fal fa-arrows-h'></i></div><span><b>" + dimensionNames(this.state.sizeVariable) + "</b><br>" + parseInt((country['' + this.state.sizeVariable] / this.state.sizeHighest) * 100) + "% of world average</span></div><div class='flex align-items-center'><div class='circle color gradient-color'><i class='fal fa-palette'></i></div><span><b>" + dimensionNames(this.state.colorVariable) + "</b><br>" + parseInt((country['' + this.state.colorVariable] / this.state.colorHighest) * 100) + "% of world average</span></div>"}
+                      fill={colorScale(country['' + this.state.colorVariable])}
+                      stroke="#607D8B"
+                      strokeWidth="2"
+                    />
+                  </Marker>
+                )
+              })
             }
           </Markers>
         </ZoomableGroup>
