@@ -26,8 +26,10 @@ class App extends Component {
             <p>What country were prefeering the child qualities <b>obedience</b> and <b>hard work</b> the most in the time span of 2010-2014?</p>
             <Spacer size="small" />
             {this.renderSlider()}
+            <Spacer size="extra-large" />
+            <a className="developed-by" href="https://www.marcokoivisto.com">Developed by Marco Koivisto</a>
+            <Spacer size="large" />
           </Container>
-          <Spacer size="extra-large" />
         </div>
       </div>
     );

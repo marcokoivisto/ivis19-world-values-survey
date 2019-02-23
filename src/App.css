@@ -39,3 +39,13 @@ select.form-control {
   pointer-events: none;
   color: #2a2a2a;
 }
+.developed-by {
+  font-size: 16px;
+  text-decoration: underline;
+  color: #2a2a2a;
+  opacity: 0.6;
+}
+.developed-by:hover {
+  opacity: 1;
+  color: #2a2a2a;
+}
