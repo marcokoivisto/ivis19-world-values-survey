@@ -14,7 +14,11 @@
     padding: 30px;
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 30px;
+}
+.slide .description.right {
+    right: 30px;
+    left: auto;
 }
 .slide.full {
     display: flex;

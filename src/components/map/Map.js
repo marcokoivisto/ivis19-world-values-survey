@@ -146,13 +146,13 @@ class Map extends Component {
                         outline: "none",
                       },
                       hover: {
-                        fill: "#ECEFF1",
+                        fill: "#ddd",
                         stroke: "#607D8B",
                         strokeWidth: 0.75,
                         outline: "none",
                       },
                       pressed: {
-                        fill: "#ECEFF1",
+                        fill: "#ddd",
                         stroke: "#607D8B",
                         strokeWidth: 0.75,
                         outline: "none",
@@ -176,7 +176,7 @@ class Map extends Component {
                       cx={0}
                       cy={0}
                       r={independenceScale.domain([0, this.state.sizeHighest])(country['' + this.state.sizeVariable])}
-                      data-tip={"<p class='tool-tip-title'><i class='fas fa-flag'></i> " + country.name + "</p><div class='flex align-items-center'><div class='circle size'><i class='fal fa-arrows-h'></i></div><span><b>" + dimensionNames(this.state.sizeVariable) + "</b><br>" + Math.ceil((country['' + this.state.sizeVariable] / this.state.sizeHighest) * 100) + "% of world average</span></div><div class='flex align-items-center'><div class='circle color gradient-color'><i class='fal fa-palette'></i></div><span><b>" + dimensionNames(this.state.colorVariable) + "</b><br>" + Math.ceil((country['' + this.state.colorVariable] / this.state.colorHighest) * 100) + "% of world average</span></div>"}
+                      data-tip={"<p class='tool-tip-title'><i class='fas fa-flag'></i> " + country.name + "</p><div class='flex align-items-center'><div class='circle size'><i class='fal fa-arrows-h'></i></div><span><b>" + dimensionNames(this.state.sizeVariable) + "</b><br>" + Math.ceil((country['' + this.state.sizeVariable] / this.state.sizeHighest) * 100) + "% preferred in world average</span></div><div class='flex align-items-center'><div class='circle color gradient-color'><i class='fal fa-palette'></i></div><span><b>" + dimensionNames(this.state.colorVariable) + "</b><br>" + Math.ceil((country['' + this.state.colorVariable] / this.state.colorHighest) * 100) + "% preferred in world average</span></div>"}
                       fill={colorScale.domain([0, this.state.colorHighest/2, this.state.colorHighest])(country['' + this.state.colorVariable])}
                       stroke="#607D8B"
                       strokeWidth="2"
@@ -236,33 +236,39 @@ class Map extends Component {
                 <div className="circle size"><i class="fal fa-arrows-h"></i></div>
                 <div className="h-spacing-small"></div>
                 <Form.Group className="no-margin" controlId="exampleForm.ControlSelectSize">
-                  <Form.Label><b>Size</b></Form.Label>
-                  <Form.Control name="size" as="select" onChange={this.handleSelectVariableChange} value={this.state.sizeVariable}>
-                    <option key="independence" value="independence">Independence</option>
-                    <option key="hard_work" value="hard_work">Hard work</option>
-                    <option key="saving_money" value="saving_money">Thrift saving money and things</option>
-                    <option key="unselfishness" value="unselfishness">Unselfishness</option>
-                    <option key="imagination" value="imagination">Imagination</option>
-                    <option key="tolerance_and_respect" value="tolerance_and_respect">Tolerance and respect for other people</option>
-                    <option key="determination" value="determination">Determination, perseverance</option>
-                    <option key="obedience" value="obedience">Obedience</option>
-                  </Form.Control>
+                  <Form.Label><b>Bubble size</b></Form.Label>
+                  <div className="select-holder">
+                    <Form.Control name="size" as="select" onChange={this.handleSelectVariableChange} value={this.state.sizeVariable}>
+                      <option key="independence" value="independence">Independence</option>
+                      <option key="hard_work" value="hard_work">Hard work</option>
+                      <option key="saving_money" value="saving_money">Thrift saving money and things</option>
+                      <option key="unselfishness" value="unselfishness">Unselfishness</option>
+                      <option key="imagination" value="imagination">Imagination</option>
+                      <option key="tolerance_and_respect" value="tolerance_and_respect">Tolerance and respect for other people</option>
+                      <option key="determination" value="determination">Determination, perseverance</option>
+                      <option key="obedience" value="obedience">Obedience</option>
+                    </Form.Control>
+                    <i className="far fa-angle-down"></i>
+                  </div>
                 </Form.Group>
                 <div className="h-spacing"></div>
                 <div className="circle color gradient-color"><i class="fal fa-palette"></i></div>
                 <div className="h-spacing-small"></div>
                 <Form.Group className="no-margin" controlId="exampleForm.ControlSelectColor">
-                  <Form.Label><b>Fill</b></Form.Label>
-                  <Form.Control name="color" as="select" onChange={this.handleSelectVariableChange} value={this.state.colorVariable}>
-                    <option key="independence" value="independence">Independence</option>
-                    <option key="hard_work" value="hard_work">Hard work</option>
-                    <option key="saving_money" value="saving_money">Thrift saving money and things</option>
-                    <option key="unselfishness" value="unselfishness">Unselfishness</option>
-                    <option key="imagination" value="imagination">Imagination</option>
-                    <option key="tolerance_and_respect" value="tolerance_and_respect">Tolerance and respect for other people</option>
-                    <option key="determination" value="determination">Determination, perseverance</option>
-                    <option key="obedience" value="obedience">Obedience</option>
-                  </Form.Control>
+                  <Form.Label><b>Bubble fill</b></Form.Label>
+                  <div className="select-holder">
+                    <Form.Control name="color" as="select" onChange={this.handleSelectVariableChange} value={this.state.colorVariable}>
+                      <option key="independence" value="independence">Independence</option>
+                      <option key="hard_work" value="hard_work">Hard work</option>
+                      <option key="saving_money" value="saving_money">Thrift saving money and things</option>
+                      <option key="unselfishness" value="unselfishness">Unselfishness</option>
+                      <option key="imagination" value="imagination">Imagination</option>
+                      <option key="tolerance_and_respect" value="tolerance_and_respect">Tolerance and respect for other people</option>
+                      <option key="determination" value="determination">Determination, perseverance</option>
+                      <option key="obedience" value="obedience">Obedience</option>
+                    </Form.Control>
+                    <i className="far fa-angle-down"></i>
+                  </div>
                 </Form.Group>
               </div>
             </Col>

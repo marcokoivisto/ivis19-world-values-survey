@@ -7,6 +7,11 @@ h2 {
 body {
   font-size: 18px;
 }
+select.form-control {
+  border-radius: 0px!important;
+  appearance: none;
+  padding-right: 40px;
+}
 .flex {
   display: flex;
 }
@@ -22,4 +27,15 @@ body {
 .h-spacing {
   width: 40px;
   display: block;
+}
+.select-holder {
+  position: relative;
+}
+.select-holder i {
+  position: absolute;
+  top: 8px;
+  font-size: 24px;
+  right: 15px;
+  pointer-events: none;
+  color: #2a2a2a;
 }

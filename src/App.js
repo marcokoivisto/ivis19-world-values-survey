@@ -23,6 +23,7 @@ class App extends Component {
             {this.renderToggles()}
             <Spacer />
             <h2>Discover processes of {!this.state.discoverProcessToShow ? 'World Values Survey' : 'my visualization'}</h2>
+            <p>What country were prefeering the child qualities <b>obedience</b> and <b>hard work</b> the most in the time span of 2010-2014?</p>
             <Spacer size="small" />
             {this.renderSlider()}
           </Container>
@@ -45,26 +46,26 @@ class App extends Component {
   renderSlider() {
     if (!this.state.discoverProcessToShow) {
       return (
-        <DiscoverSlider key={0}>
-          <Slide step="1" text="Lets you select a time span which then can not be changed without going back." />
-          <Slide step="2" text="Countries you want to compare can be filtered. These settings can not be changed without going back here." />
-          <Slide step="3" text="A single dimension of data can be selected, dimensions can’t be compared to each other." />
-          <Slide step="4" text="The initial visualization offers a table. The values of the table can be presented in percentage, count etc." />
-          <Slide step="5" text="Some different diagram visualizations are available, which makes it a bit easier to compare countries." />
-          <Slide step="6" text="A map visualization is available but visualizing multiple dimensions to compare different data is still not available here." />
-          <Slide step="7" customClass="full" text="The selection through the step navigation makes the interaction with the final visualization inefficient, you need to step back and forth. The visualizations are poor, the initial presentation is a table which does not allow for comparison of many countries. The map and diagrams are a bit better for comparison among countries. The largest issue is that only a single dimension of the data can be compared at the same time." />
+        <DiscoverSlider numOfSlides={8} imageEnding={''} key={0}>
+          <Slide step="1" text="Firstly I'm selecting the time span 2010-2014." />
+          <Slide step="2" text="I'm selecting all countries." />
+          <Slide step="3" text="A single dimension of data can be selected, dimensions can’t be compared to each other. I start by selecting obedience." />
+          <Slide step="4" text="The initial visualization offers a table. Making it very hard compairing all countries." />
+          <Slide step="5" text="I find a bar diagram where I compare the values and see that India is prefeering obedience most of the countries." />
+          <Slide step="6" text="I go back and select hard work." />
+          <Slide step="7" text="By compairing the values in a bar diagram once again I see that India is also prefeering hard work most of the countries." />
+          <Slide title="Summary" step="8" customClass="full" text="The selection through the step navigation makes the interaction with the final visualization inefficient, you need to step back and forth. The visualizations are poor, the initial presentation is a table which does not allow for comparison of many countries. Some of the main issues are that the data is poorly described and hard to interpret, secondly that only a single dimension of the data can be viewed at the same time and no filtering is provided." />
         </DiscoverSlider>
       )
     } else {
       return (
-        <DiscoverSlider key={1}>
-          <Slide step="1" text="Lets you select a time span which then can not be changed without going back." />
-          <Slide step="2" text="Countries you want to compare can be filtered. These settings can not be changed without going back here." />
-          <Slide step="3" text="A single dimension of data can be selected, dimensions can’t be compared to each other." />
-          <Slide step="4" text="The initial visualization offers a table. The values of the table can be presented in percentage, count etc." />
-          <Slide step="5" text="Some different diagram visualizations are available, which makes it a bit easier to compare countries." />
-          <Slide step="6" text="A map visualization is available but visualizing multiple dimensions to compare different data is still not available here." />
-          <Slide step="7" customClass="full" text="The selection through the step navigation makes the interaction with the final visualization inefficient, you need to step back and forth. The visualizations are poor, the initial presentation is a table which does not allow for comparison of many countries. The map and diagrams are a bit better for comparison among countries. The largest issue is that only a single dimension of the data can be compared at the same time." />
+        <DiscoverSlider numOfSlides={6} imageEnding={'-my'} key={1}>
+          <Slide step="1" text="Firstly I'm selecting the time span 2010-2014." />
+          <Slide textPosition="right" step="2" text="I'm then choosing the qualities obedience and hard work." />
+          <Slide step="3" text="I then filter out countries which see hard work as low and medium prefeered." />
+          <Slide step="4" text="I pan the map in order too see I'm not missing any country results." />
+          <Slide step="5" text="By hovering the remaining results I see that India prefers the child qualities obedience and hard work more than any country." />
+          <Slide title="Learnings" step="6" customClass="full" text="From the process of creating this visualization I've mainly learnt that processing data takes lots of time. I have also seen the extreme value in proper visualizations with simple filtering options and more. I have also increased my knowledge of visualizing data in react. If I had more time I would like to add filtering for both variables instead of just one, add further data and possibly try to fit a third dimension in the visualization. It would also be nice to provide navigation where all the data of a specific country could be visualized." />
         </DiscoverSlider>
       )
     }

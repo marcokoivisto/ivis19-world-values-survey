@@ -10,9 +10,12 @@ class DiscoverSlider extends Component {
       slidesToScroll: 1,
       initialSlide: 0
     };
+    const childWithProp = React.Children.map(this.props.children, (child) => {
+      return React.cloneElement(child, { numOfSlides: this.props.numOfSlides, imageEnding: this.props.imageEnding });
+    });
     return (
       <Slider {...settings}>
-        {this.props.children}
+        {childWithProp}
       </Slider>
     );
   }
